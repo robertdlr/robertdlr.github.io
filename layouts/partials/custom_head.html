@@ -1,0 +1,77 @@
+<!-- A partial to be overwritten by the user.
+     Its content will appear before the closing </head>-tag -->
+
+
+<!-- Custom CSS via inline styles
+     You may use this template to add custom CSS to your site like so: -->
+
+<style>
+:root {
+    /* see variables.scss for more variables*/
+
+    /*
+    --section-light-text-color: #3a4145!important;
+    --section-light-bg-color: #ffdb8c!important;
+    --section-dark-bg-color: #035e00!important;
+    */
+
+    /* === Cover / Landing area === */
+    --cover-text-color: #ffffff;
+    /* Used for Landing screen menu buttons, but potentially usable for highlighting other things */
+    --highlight: #88aeb9;
+    --highlight-contrast: var(--cover-text-color);
+    /*inverse colors used for :hover */
+    --highlight-inverse: var(--cover-text-color);
+    --highlight-inverse-contrast: white;
+
+    /* visual guard around title and description, when the feature is enabled */
+    --cover-title-and-description-guard-bg-color: rgba(255, 255, 255, 0.6);
+    --cover-title-text-shadow: white 0px 0px 7px;
+
+    /* === sticky top/left navigation menus === */
+    --sticky-menu-text-color: #309ebd;
+
+    /* === Alternating content (post) sections  === */
+    /* Light section - text color */
+    --section-light-text-color: #3a4145;
+    /* Light section - background color */
+    --section-light-bg-color: #fbfdff;
+
+    /* Dark section - text color */
+    --section-dark-text-color: var(--section-light-bg-color);
+    /* Dark section - background color */
+    --section-dark-bg-color: var(--section-light-text-color);
+
+    /* Light&Dark section >quote. Suppressive color, compared to 'Light section - text color'*/
+    --section-uni-quote: grey;
+    /* Light&Dark section `code` a bit darker than 'Light section - background color' */
+    --section-uni-code-bg-color: #dce1e6;
+
+    /* === Single pages=== */
+    --single-page-text-color: var(--section-light-text-color);
+    --single-page-bg-color: var(--section-light-bg-color);
+
+    /* === Footer === */
+    --footer-color-background: #22343a;
+    --footer-color: #bbc7cc;
+
+     /* define list element for unnumbered lists, leave empty for default list element */
+     /* fa-asterisk is the default icon if this variable definition is missing completely */
+     /* --ul-li-icon: fa-dashcube;     this sets fa-dashcube as list icon */
+     --ul-li-icon: ;                /* this sets the default html list icon */
+}
+</style>
+
+
+<!-- Custom CSS: Color Codes
+     You may checkout https://htmlcolorcodes.com/ to get those
+     weird color codes (like "#22343A") ;-). -->
+
+<!-- Custom link-tags for different icons
+     Generated via https://favicon.io/favicon-generator/ -->
+
+{{ with resources.Get "images/apple-touch-icon.png" }}<link rel="apple-touch-icon" sizes="180x180" href="{{ .RelPermalink }}" />{{ end }}
+{{ with resources.Get "images/favicon.svg" }}<link rel="icon" type="image/svg+xml" href="{{ .RelPermalink }}" />{{ end }}
+{{ range seq 9 4 }}{{ $size := pow 2 . }}{{ $file := replace "images/favicon-##x##.png" "##" $size }}{{ with resources.Get $file }}
+<link rel="icon" type="{{ .MediaType.Type }}" sizes="{{- $size -}}x{{- $size -}}" href="{{ .RelPermalink }}" />{{ end }}{{ end }}
+
